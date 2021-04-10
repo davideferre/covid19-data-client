@@ -20,6 +20,8 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      apiBaseUrl: process.env.API_BASE_URL,
+      apiNamespace: process.env.API_NAMESPACE,
     },
   };
 
