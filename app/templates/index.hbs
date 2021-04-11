@@ -1,37 +1,115 @@
-{{page-title "Dati nazionali"}}
+{{page-title "Riepilogo"}}
 <h3 class="text-center">Andamento nazionale</h3>
-<table class="table table-striped">
-    <thead class="table-primary">
-        <tr>
-            <th class="text-center">Data</th>
-            <th class="text-center">Nuovi positivi</th>
-            <th class="text-center">Variazione totale positivi</th>
-            <th class="text-center">Terapia intensiva</th>
-            <th class="text-center">Ingressi terapia intensiva</th>
-            <th class="text-center">Incremento tamponi</th>
-            <th class="text-center">Tasso positività</th>
-            <th class="text-center">Incremento decessi</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each this.model as |day|}}
-            <tr>
-                <td class="text-center">{{date-format day.time}}</td>
-                <td class="text-center">{{day.nuovi_positivi}}</td>
-                <td class="text-center{{if (lt day.variazione_totale_positivi 0) ' text-success' (if (gt day.variazione_totale_positivi 0) ' text-danger' '')}}">
-                    {{day.variazione_totale_positivi}}
-                </td>
-                <td class="text-center{{if (lt day.variazione_terapia_intensiva 0) ' text-success' (if (gt day.variazione_terapia_intensiva 0) ' text-danger' '')}}">
-                    {{day.terapia_intensiva}}
-                    ({{day.variazione_terapia_intensiva}})
-                </td>
-                <td class="text-center">{{day.ingressi_terapia_intensiva}}</td>
-                <td class="text-center{{if (eq day.trend_tamponi '+') ' text-success' (if (eq day.trend_tamponi '-') ' text-danger' '')}}">
-                    {{day.incremento_tamponi}}
-                </td>
-                <td class="text-center">{{day.tasso_positivi}}%</td>
-                <td class="text-center">{{day.incremento_deceduti}}</td>
-            </tr>
-        {{/each}}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nuovi positivi</h5>
+                    <div class="row card-text">
+                        <div class="col-10">
+                            {{this.model.firstObject.nuovi_positivi}}
+                        </div>
+                        <div class="col-2">
+                            {{#if (gt this.model.firstObject.trend_nuovi_positivi 0)}}
+                                <FaIcon @icon="arrow-up" @class="text-danger" />
+                            {{else}}
+                                {{#if (lt this.model.firstObject.trend_nuovi_positivi 0)}}
+                                    <FaIcon @icon="arrow-down" @class="text-success" />
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tamponi</h5>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-10">
+                                {{this.model.firstObject.incremento_tamponi}}
+                            </div>
+                            <div class="col-2">
+                                {{#if (gt this.model.firstObject.trend_tamponi 0)}}
+                                    <FaIcon @icon="arrow-up" @class="text-success" />
+                                {{else}}
+                                {{#if (lt this.model.firstObject.trend_tamponi 0)}}
+                                    <FaIcon @icon="arrow-down" @class="text-danger" />
+                                {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tasso positivi</h5>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-10">
+                                {{this.model.firstObject.tasso_positivi}}%
+                            </div>
+                            <div class="col-2">
+                                {{#if (gt this.model.firstObject.trend_tasso_positivi 0)}}
+                                    <FaIcon @icon="arrow-up" @class="text-danger" />
+                                {{else}}
+                                {{#if (lt this.model.firstObject.trend_tasso_positivi 0)}}
+                                    <FaIcon @icon="arrow-down" @class="text-success" />
+                                {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Deceduti</h5>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-10">
+                                {{this.model.firstObject.incremento_deceduti}}
+                            </div>
+                            <div class="col-2">
+                                {{#if (gt this.model.firstObject.trend_deceduti 0)}}
+                                <FaIcon @icon="arrow-up" @class="text-danger" />
+                                {{else}}
+                                {{#if (lt this.model.firstObject.trend_deceduti 0)}}
+                                <FaIcon @icon="arrow-down" @class="text-success" />
+                                {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Terapie intensive</h5>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="fw-bold">Variazione:</label>
+                                {{this.model.firstObject.variazione_terapia_intensiva}}
+                            </div>
+                            <div class="col-6">
+                                <label class="fw-bold">Ingressi:</label>
+                                {{this.model.firstObject.ingressi_terapia_intensiva}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

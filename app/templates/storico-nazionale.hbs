@@ -1,0 +1,40 @@
+{{page-title "Dati di storico nazionali"}}
+<h3 class="text-center">Dati di storico nazionali</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">Data</th>
+      <th class="text-center">Nuovi positivi</th>
+      <th class="text-center">Variazione totale positivi</th>
+      <th class="text-center">Terapia intensiva</th>
+      <th class="text-center">Ingressi terapia intensiva</th>
+      <th class="text-center">Incremento tamponi</th>
+      <th class="text-center">Tasso positività</th>
+      <th class="text-center">Incremento decessi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model as |day|}}
+    <tr>
+      <td class="text-center">{{date-format day.time}}</td>
+      <td class="text-center">{{day.nuovi_positivi}}</td>
+      <td
+        class="text-center{{if (lt day.variazione_totale_positivi 0) ' text-success' (if (gt day.variazione_totale_positivi 0) ' text-danger' '')}}">
+        {{day.variazione_totale_positivi}}
+      </td>
+      <td
+        class="text-center{{if (lt day.variazione_terapia_intensiva 0) ' text-success' (if (gt day.variazione_terapia_intensiva 0) ' text-danger' '')}}">
+        {{day.terapia_intensiva}}
+        ({{day.variazione_terapia_intensiva}})
+      </td>
+      <td class="text-center">{{day.ingressi_terapia_intensiva}}</td>
+      <td
+        class="text-center{{if (eq day.trend_tamponi '+') ' text-success' (if (eq day.trend_tamponi '-') ' text-danger' '')}}">
+        {{day.incremento_tamponi}}
+      </td>
+      <td class="text-center">{{day.tasso_positivi}}%</td>
+      <td class="text-center">{{day.incremento_deceduti}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
