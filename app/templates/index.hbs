@@ -5,10 +5,10 @@
         <div class="col-2">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Nuovi positivi</h5>
+                    <h5 class="card-title">{{this.model.firstObject.nuovi_positivi}}</h5>
                     <div class="row card-text">
                         <div class="col-10">
-                            {{this.model.firstObject.nuovi_positivi}}
+                            <h6 class="card-subtitle text-muted mt-1">Nuovi positivi</h6>
                         </div>
                         <div class="col-2">
                             {{#if (gt this.model.firstObject.trend_nuovi_positivi 0)}}
@@ -26,11 +26,11 @@
         <div class="col-2">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Tamponi</h5>
+                    <h5 class="card-title">{{this.model.firstObject.incremento_tamponi}}</h5>
                     <div class="card-text">
                         <div class="row">
                             <div class="col-10">
-                                {{this.model.firstObject.incremento_tamponi}}
+                                <h6 class="card-subtitle text-muted mt-1">Tamponi</h6>
                             </div>
                             <div class="col-2">
                                 {{#if (gt this.model.firstObject.trend_tamponi 0)}}
@@ -49,11 +49,11 @@
         <div class="col-2">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Tasso positivi</h5>
+                    <h5 class="card-title">{{this.model.firstObject.tasso_positivi}}%</h5>
                     <div class="card-text">
                         <div class="row">
                             <div class="col-10">
-                                {{this.model.firstObject.tasso_positivi}}%
+                                <h6 class="card-subtitle text-muted mt-1">Tasso positivi</h6>
                             </div>
                             <div class="col-2">
                                 {{#if (gt this.model.firstObject.trend_tasso_positivi 0)}}
@@ -72,11 +72,11 @@
         <div class="col-2">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Deceduti</h5>
+                    <h5 class="card-title">{{this.model.firstObject.incremento_deceduti}}</h5>
                     <div class="card-text">
                         <div class="row">
                             <div class="col-10">
-                                {{this.model.firstObject.incremento_deceduti}}
+                                <h6 class="card-subtitle text-muted mt-1">Deceduti</h6>
                             </div>
                             <div class="col-2">
                                 {{#if (gt this.model.firstObject.trend_deceduti 0)}}
@@ -110,6 +110,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#9c27b0"></Chart>
+        </div>
+        <div class="col-6">
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="terapia_intensiva" @label="Terapie intensive" @color="#03a9f4"></Chart>
         </div>
     </div>
 </div>
