@@ -62,6 +62,7 @@ export default class ChartComponent extends Component {
 
   _getChartOptions() {
     return {
+      responsive: true,
       scales: {
         x: {
           type: 'time',
@@ -71,13 +72,13 @@ export default class ChartComponent extends Component {
           },
           title: {
             display: true,
-            text: 'Date',
+            text: 'Data',
           },
         },
         y: {
           title: {
             display: true,
-            text: 'value',
+            text: this.args.label,
           },
         },
       },

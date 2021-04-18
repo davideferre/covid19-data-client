@@ -112,12 +112,20 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-6">
-            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#9c27b0"></Chart>
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
         </div>
         <div class="col-6">
-            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="terapia_intensiva" @label="Terapie intensive" @color="#03a9f4"></Chart>
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="terapia_intensiva" @label="Terapie intensive" @color="#4BC0C0"></Chart>
+        </div>
+        <div class="col-6">
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="incremento_deceduti" @label="Incremento deceduti" @color="#333538"></Chart>
         </div>
     </div>
 </div>
