@@ -12,6 +12,5 @@ export default class ApplicationAdapter extends RESTAdapter {
       .APP;
     this.host = _oAppConfig.apiBaseUrl;
     this.namespace = _oAppConfig.apiNamespace;
-    console.log(this.host, this.namespace);
   }
 }
