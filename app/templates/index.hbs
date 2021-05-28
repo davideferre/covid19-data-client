@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{this.model.firstObject.nuovi_positivi}}</h5>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{this.model.firstObject.incremento_tamponi}}</h5>
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{this.model.firstObject.tasso_positivi}}%</h5>
@@ -80,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{this.model.firstObject.incremento_deceduti}}</h5>
@@ -103,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-sm-12 col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Terapie intensive</h5>
@@ -124,18 +124,18 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-6">
+        <div class="col-sm-12 col-md-6">
             <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
         </div>
-        <div class="col-6">
+        <div class="col-sm-12 col-md-6">
             <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-6">
+        <div class="col-sm-12 col-md-6">
             <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="terapia_intensiva" @label="Terapie intensive" @color="#4BC0C0"></Chart>
         </div>
-        <div class="col-6">
+        <div class="col-sm-12 col-md-6">
             <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="incremento_deceduti" @label="Incremento deceduti" @color="#333538"></Chart>
         </div>
     </div>
