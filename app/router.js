@@ -8,4 +8,5 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('storico-nazionale');
+  this.route('regions', { path: '/regions/:region' });
 });

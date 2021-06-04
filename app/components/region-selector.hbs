@@ -1,0 +1,6 @@
+<select class="form-select" aria-label="Dati regionali" {{on "change" this.onRegionChange}}>
+    <option value="-1">-Seleziona regione-</option>
+    {{#each this.regionsOptions as |region|}}
+        <option value={{region.value}}>{{region.label}}</option>
+    {{/each}}
+</select>

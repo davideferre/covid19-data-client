@@ -1,18 +1,18 @@
-{{page-title "Riepilogo"}}
+{{page-title "Regions"}}
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12">
             <h3 class="text-center mt-2">
-                Andamento nazionale - {{date-format this.model.firstObject.time}}
+                Andamento regione {{this.model.firstObject.denominazione_regione}} - {{date-format this.model.firstObject.time}}
             </h3>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col text-center mb-2">
-            <LinkTo @route="storico-nazionale">Dati di storico</LinkTo>
+            <LinkTo @route="index">Dati nazionali</LinkTo>
         </div>
         <div class="col text-center mb-2">
-            <RegionSelector/>
+            <RegionSelector />
         </div>
     </div>
     <div class="row">
@@ -26,11 +26,11 @@
                         </div>
                         <div class="col-2">
                             {{#if (gt this.model.firstObject.trend_nuovi_positivi 0)}}
-                                <FaIcon @icon="arrow-up" @class="text-danger" />
+                            <FaIcon @icon="arrow-up" @class="text-danger" />
                             {{else}}
-                                {{#if (lt this.model.firstObject.trend_nuovi_positivi 0)}}
-                                    <FaIcon @icon="arrow-down" @class="text-success" />
-                                {{/if}}
+                            {{#if (lt this.model.firstObject.trend_nuovi_positivi 0)}}
+                            <FaIcon @icon="arrow-down" @class="text-success" />
+                            {{/if}}
                             {{/if}}
                         </div>
                     </div>
@@ -48,10 +48,10 @@
                             </div>
                             <div class="col-2">
                                 {{#if (gt this.model.firstObject.trend_tamponi 0)}}
-                                    <FaIcon @icon="arrow-up" @class="text-success" />
+                                <FaIcon @icon="arrow-up" @class="text-success" />
                                 {{else}}
                                 {{#if (lt this.model.firstObject.trend_tamponi 0)}}
-                                    <FaIcon @icon="arrow-down" @class="text-danger" />
+                                <FaIcon @icon="arrow-down" @class="text-danger" />
                                 {{/if}}
                                 {{/if}}
                             </div>
@@ -71,10 +71,10 @@
                             </div>
                             <div class="col-2">
                                 {{#if (gt this.model.firstObject.trend_tasso_positivi 0)}}
-                                    <FaIcon @icon="arrow-up" @class="text-danger" />
+                                <FaIcon @icon="arrow-up" @class="text-danger" />
                                 {{else}}
                                 {{#if (lt this.model.firstObject.trend_tasso_positivi 0)}}
-                                    <FaIcon @icon="arrow-down" @class="text-success" />
+                                <FaIcon @icon="arrow-down" @class="text-success" />
                                 {{/if}}
                                 {{/if}}
                             </div>
@@ -128,18 +128,22 @@
     </div>
     <div class="row mt-2">
         <div class="col-sm-12 col-md-6">
-            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="nuovi_positivi"
+                @label="Nuovi positivi" @color="#F66384"></Chart>
         </div>
         <div class="col-sm-12 col-md-6">
-            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="tasso_positivi"
+                @label="Tasso positivi" @color="#36A2EB"></Chart>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-sm-12 col-md-6">
-            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="terapia_intensiva" @label="Terapie intensive" @color="#4BC0C0"></Chart>
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="terapia_intensiva"
+                @label="Terapie intensive" @color="#4BC0C0"></Chart>
         </div>
         <div class="col-sm-12 col-md-6">
-            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="incremento_deceduti" @label="Incremento deceduti" @color="#333538"></Chart>
+            <Chart @id="nuovi-positivi" @type="line" @data={{this.model}} @dataKey="incremento_deceduti"
+                @label="Incremento deceduti" @color="#333538"></Chart>
         </div>
     </div>
 </div>
