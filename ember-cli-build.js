@@ -31,6 +31,7 @@ module.exports = function (defaults) {
       using: [{ transformation: 'amd', as: 'chartjs-adapter-date-fns' }],
     }
   );
+  app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js');
 
   return app.toTree();
 };
