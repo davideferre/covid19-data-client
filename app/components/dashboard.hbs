@@ -1,94 +1,16 @@
 <div class="contaier-fluid">
   <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{@data.firstObject.nuovi_positivi}}</h5>
-          <div class="row card-text">
-            <div class="col-10">
-              <h6 class="card-subtitle text-muted mt-1">Nuovi positivi</h6>
-            </div>
-            <div class="col-2">
-              {{#if (gt @data.firstObject.trend_nuovi_positivi 0)}}
-              <FaIcon @icon="arrow-up" @class="text-danger" />
-              {{else}}
-              {{#if (lt @data.firstObject.trend_nuovi_positivi 0)}}
-              <FaIcon @icon="arrow-down" @class="text-success" />
-              {{/if}}
-              {{/if}}
-            </div>
-          </div>
-        </div>
-      </div>
+      <TrendCard @title={{@data.firstObject.nuovi_positivi}} @label="Nuovi positivi" @trend={{@data.firstObject.nuovi_positivi}} />
     </div>
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{@data.firstObject.incremento_tamponi}}</h5>
-          <div class="card-text">
-            <div class="row">
-              <div class="col-10">
-                <h6 class="card-subtitle text-muted mt-1">Tamponi</h6>
-              </div>
-              <div class="col-2">
-                {{#if (gt @data.firstObject.trend_tamponi 0)}}
-                <FaIcon @icon="arrow-up" @class="text-success" />
-                {{else}}
-                {{#if (lt @data.firstObject.trend_tamponi 0)}}
-                <FaIcon @icon="arrow-down" @class="text-danger" />
-                {{/if}}
-                {{/if}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TrendCard @title={{@data.firstObject.incremento_tamponi}} @label="Tamponi" @trend={{@data.firstObject.incremento_tamponi}} />
     </div>
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{@data.firstObject.tasso_positivi}}%</h5>
-          <div class="card-text">
-            <div class="row">
-              <div class="col-10">
-                <h6 class="card-subtitle text-muted mt-1">Tasso positivi</h6>
-              </div>
-              <div class="col-2">
-                {{#if (gt @data.firstObject.trend_tasso_positivi 0)}}
-                <FaIcon @icon="arrow-up" @class="text-danger" />
-                {{else}}
-                {{#if (lt @data.firstObject.trend_tasso_positivi 0)}}
-                <FaIcon @icon="arrow-down" @class="text-success" />
-                {{/if}}
-                {{/if}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TrendCard @title={{concat @data.firstObject.tasso_positivi '%'}} @label="Tasso positivi" @trend={{@data.firstObject.tasso_positivi}} />
     </div>
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{@data.firstObject.incremento_deceduti}}</h5>
-          <div class="card-text">
-            <div class="row">
-              <div class="col-10">
-                <h6 class="card-subtitle text-muted mt-1">Deceduti</h6>
-              </div>
-              <div class="col-2">
-                {{#if (gt @data.firstObject.trend_deceduti 0)}}
-                <FaIcon @icon="arrow-up" @class="text-danger" />
-                {{else}}
-                {{#if (lt @data.firstObject.trend_deceduti 0)}}
-                <FaIcon @icon="arrow-down" @class="text-success" />
-                {{/if}}
-                {{/if}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TrendCard @title={{@data.firstObject.incremento_deceduti}} @label="Deceduti" @trend={{@data.firstObject.incremento_deceduti}} />
     </div>
     <div class="col-sm-12 col-md-8 col-lg-4">
       <div class="card">
@@ -98,7 +20,7 @@
             <div class="row">
               <div class="col-6">
                 <label class="fw-bold">Variazione:</label>
-                {{@data.firstObject.variazione_terapia_intensiva}}
+                <span class={{if (gte @data.firstObject.variazione_terapia_intensiva 0) 'text-danger' 'text-success'}}>{{@data.firstObject.variazione_terapia_intensiva}}</span>
               </div>
               <div class="col-6">
                 <label class="fw-bold">Ingressi:</label>

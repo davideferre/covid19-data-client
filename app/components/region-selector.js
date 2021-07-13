@@ -39,6 +39,10 @@ export default class RegionSelectorComponent extends Component {
   @action
   onRegionChange(oEvent) {
     let _sNewRegion = oEvent.target.value;
-    this.router.transitionTo(`/regions/${_sNewRegion}`);
+    if (_sNewRegion !== '-1') {
+      this.router.transitionTo(`/regions/${_sNewRegion}`);
+    } else {
+      this.router.transitionTo('/');
+    }
   }
 }

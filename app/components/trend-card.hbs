@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{@title}}</h5>
+    <div class="row card-text">
+      <div class="col-10">
+        <h6 class="card-subtitle text-muted mt-1">{{@label}}</h6>
+      </div>
+      <div class="col-2">
+        {{#if (gt @trend 0)}}
+          <FaIcon @icon="arrow-up" @class="text-danger" />
+        {{else}}
+          {{#if (lt @trend 0)}}
+            <FaIcon @icon="arrow-down" @class="text-success" />
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
