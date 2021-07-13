@@ -12,7 +12,7 @@
       <LinkTo @route="index">Dati nazionali</LinkTo>
     </div>
     <div class="col text-center mb-2">
-      <RegionSelector />
+      <RegionSelector @region={{this.model.firstObject.codice_regione}} />
     </div>
   </div>
   <Dashboard @data={{@model}} />
