@@ -1,16 +1,16 @@
 <div class="contaier-fluid">
   <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <TrendCard @title={{@data.firstObject.nuovi_positivi}} @label="Nuovi positivi" @trend={{@data.firstObject.nuovi_positivi}} />
+      <TrendCard @title={{@data.firstObject.nuovi_positivi}} @label="Nuovi positivi" @trend={{@data.firstObject.trend_nuovi_positivi}} @greater={{false}} />
     </div>
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <TrendCard @title={{@data.firstObject.incremento_tamponi}} @label="Tamponi" @trend={{@data.firstObject.incremento_tamponi}} />
+      <TrendCard @title={{@data.firstObject.incremento_tamponi}} @label="Tamponi" @trend={{@data.firstObject.trend_tamponi}} @greater={{true}} />
     </div>
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <TrendCard @title={{concat @data.firstObject.tasso_positivi '%'}} @label="Tasso positivi" @trend={{@data.firstObject.tasso_positivi}} />
+      <TrendCard @title={{concat @data.firstObject.tasso_positivi '%'}} @label="Tasso positivi" @trend={{@data.firstObject.trend_tasso_positivi}} @greater={{false}} />
     </div>
     <div class="col-sm-12 col-md-4 col-lg-2">
-      <TrendCard @title={{@data.firstObject.incremento_deceduti}} @label="Deceduti" @trend={{@data.firstObject.incremento_deceduti}} />
+      <TrendCard @title={{@data.firstObject.incremento_deceduti}} @label="Deceduti" @trend={{@data.firstObject.trend_deceduti}} @greater={{false}} />
     </div>
     <div class="col-sm-12 col-md-8 col-lg-4">
       <div class="card">
@@ -34,12 +34,10 @@
   </div>
   <div class="row mt-2">
     <div class="col-sm-12 col-md-6">
-      <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="nuovi_positivi" @label="Nuovi positivi"
-        @color="#F66384"></Chart>
+      <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
     </div>
     <div class="col-sm-12 col-md-6">
-      <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="tasso_positivi" @label="Tasso positivi"
-        @color="#36A2EB"></Chart>
+      <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
     </div>
   </div>
   <div class="row mt-2">

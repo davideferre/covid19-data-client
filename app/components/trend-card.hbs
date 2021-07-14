@@ -7,10 +7,10 @@
       </div>
       <div class="col-2">
         {{#if (gt @trend 0)}}
-          <FaIcon @icon="arrow-up" @class="text-danger" />
+          <FaIcon @icon="arrow-up" @class={{if @greater "text-success" "text-danger"}} />
         {{else}}
           {{#if (lt @trend 0)}}
-            <FaIcon @icon="arrow-down" @class="text-success" />
+            <FaIcon @icon="arrow-down" @class={{if @greater "text-danger" "text-success"}} />
           {{/if}}
         {{/if}}
       </div>
