@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | trend-card', function(hooks) {
+module('Integration | Component | trend-card', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders trend title and label', async function (assert) {
@@ -11,19 +11,23 @@ module('Integration | Component | trend-card', function(hooks) {
     this.set('title', 'title');
     this.set('label', 'label');
 
-    await render(hbs`<TrendCard @title={{this.title}} @label={{this.label}} />`);
+    await render(
+      hbs`<TrendCard @title={{this.title}} @label={{this.label}} />`
+    );
 
     assert.dom('[data-test-title]').hasText('title');
     assert.dom('[data-test-label]').hasText('label');
   });
 
-  test('it renders greater trend with greater option', async function(assert) {
+  test('it renders greater trend with greater option', async function (assert) {
     assert.expect(3);
 
     this.set('trend', 1);
     this.set('greater', true);
 
-    await render(hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`);
+    await render(
+      hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`
+    );
 
     assert.dom('[data-test-trend-greater]').exists();
     assert.dom('[data-test-trend-lower]').doesNotExist();
@@ -36,7 +40,9 @@ module('Integration | Component | trend-card', function(hooks) {
     this.set('trend', 1);
     this.set('greater', false);
 
-    await render(hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`);
+    await render(
+      hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`
+    );
 
     assert.dom('[data-test-trend-greater]').exists();
     assert.dom('[data-test-trend-lower]').doesNotExist();
@@ -49,7 +55,9 @@ module('Integration | Component | trend-card', function(hooks) {
     this.set('trend', -1);
     this.set('greater', true);
 
-    await render(hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`);
+    await render(
+      hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`
+    );
 
     assert.dom('[data-test-trend-lower]').exists();
     assert.dom('[data-test-trend-greater]').doesNotExist();
@@ -62,7 +70,9 @@ module('Integration | Component | trend-card', function(hooks) {
     this.set('trend', -1);
     this.set('greater', false);
 
-    await render(hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`);
+    await render(
+      hbs`<TrendCard @trend={{this.trend}} @greater={{this.greater}} />`
+    );
 
     assert.dom('[data-test-trend-lower]').exists();
     assert.dom('[data-test-trend-greater]').doesNotExist();

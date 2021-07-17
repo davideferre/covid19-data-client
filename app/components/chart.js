@@ -30,6 +30,9 @@ export default class ChartComponent extends Component {
     let _aModelData = [];
     let _sDataKey = this.args.dataKey;
     let _aLabels = [];
+    if (!this.args.data) {
+      return;
+    }
     this.args.data.forEach((oData) => {
       _aLabels.push(oData.time);
       _aModelData.push({ x: oData.time, y: oData[_sDataKey] });

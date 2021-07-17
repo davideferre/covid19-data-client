@@ -4,6 +4,9 @@ export default class DateFormat extends Helper {
   compute([date], { language, type }) {
     let _sLanguage = language || navigator.language;
     let _oDate = new Date(date);
+    if (!(_oDate instanceof Date && !isNaN(_oDate))) {
+      return '';
+    }
     let _oType = type || 'date';
     let _oFormatter;
     if (_oType === 'datetime') {
