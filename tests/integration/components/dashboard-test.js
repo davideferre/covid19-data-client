@@ -3,24 +3,21 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | dashboard', function(hooks) {
+module('Integration | Component | dashboard', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`<Dashboard />`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom('.card-subtitle').exists({ count: 4 });
 
-    // Template block usage:
-    await render(hbs`
-      <Dashboard>
-        template block text
-      </Dashboard>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('[data-test-label="Nuovi positivi"]').exists();
+    assert.dom('[data-test-label="Tamponi"]').exists();
+    assert.dom('[data-test-label="Tasso positivi"]').exists();
+    assert.dom('[data-test-label="Deceduti"]').exists();
+    assert.dom('[data-test-title="Terapie intensive"]').exists();
   });
 });

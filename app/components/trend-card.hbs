@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title" data-test-title>{{@title}}</h5>
+    <h5 class="card-title" data-test-title={{@title}}>{{@title}}</h5>
     <div class="row card-text">
       <div class="col-10">
-        <h6 class="card-subtitle text-muted mt-1" data-test-label>{{@label}}</h6>
+        <h6 class="card-subtitle text-muted mt-1" data-test-label={{@label}}>{{@label}}</h6>
       </div>
       <div class="col-2">
         {{#if (gt @trend 0)}}
