@@ -19,5 +19,9 @@ module('Integration | Component | dashboard', function (hooks) {
     assert.dom('[data-test-label="Tasso positivi"]').exists();
     assert.dom('[data-test-label="Deceduti"]').exists();
     assert.dom('[data-test-title="Terapie intensive"]').exists();
+    assert.dom('[data-test-chart-title="Nuovi positivi"]').exists();
+    assert.dom('[data-test-chart-title="Tasso positivi"]').exists();
+    assert.dom('[data-test-chart-title="Terapie intensive"]').exists();
+    assert.dom('[data-test-chart-title="Incremento deceduti"]').exists();
   });
 });
