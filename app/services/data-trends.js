@@ -1,6 +1,4 @@
-import Service from '@ember/service';
-
-import { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 
 export default class DataTrendsService extends Service {
   @service store;
@@ -9,7 +7,7 @@ export default class DataTrendsService extends Service {
     let _aNationData;
     try {
       _aNationData = await this.store.findAll('nation');
-    } catch {
+    } catch (oError) {
       _aNationData = [];
     }
     return this._getTrends(_aNationData);
@@ -21,7 +19,7 @@ export default class DataTrendsService extends Service {
       _aRegionData = await this.store.query('region', {
         region: sRegionCode,
       });
-    } catch {
+    } catch (oError) {
       _aRegionData = [];
     }
     return this._getTrends(_aRegionData);

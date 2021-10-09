@@ -14,7 +14,7 @@ module('Integration | Helper | date-format', function (hooks) {
       hbs`{{date-format this.inputValue language='it-IT' type='date'}}`
     );
 
-    assert.equal(this.element.textContent.trim(), '09/04/2021');
+    assert.dom(this.element).hasText('09/04/2021');
   });
 
   test('it renders datetime', async function (assert) {
@@ -24,7 +24,7 @@ module('Integration | Helper | date-format', function (hooks) {
       hbs`{{date-format this.inputValue language='it-IT' type='datetime'}}`
     );
 
-    assert.equal(this.element.textContent.trim(), '09/04/2021, 17:00:00');
+    assert.dom(this.element).hasText('09/04/2021, 17:00:00');
   });
 
   test('it does not renders with invalid date', async function (assert) {
@@ -34,6 +34,6 @@ module('Integration | Helper | date-format', function (hooks) {
       hbs`{{date-format this.inputValue language='it-IT' type='date'}}`
     );
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom(this.element).hasText('');
   });
 });

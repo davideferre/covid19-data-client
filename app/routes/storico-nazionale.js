@@ -9,7 +9,7 @@ export default class StoricoNazionaleRoute extends Route {
     let _aNationData;
     try {
       _aNationData = await this.store.findAll('nation');
-    } catch {
+    } catch (oError) {
       _aNationData = [];
     }
     let _nTamponiOld = 0;
