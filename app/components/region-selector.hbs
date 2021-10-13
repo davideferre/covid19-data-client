@@ -1,4 +1,4 @@
-<select class="form-select" aria-label="Dati regionali" {{on "change" this.onRegionChange}}>
+<select aria-label="Dati regionali" {{on "change" this.onRegionChange}} ...attributes>
     <option value="-1" data-test-region-option="-1">-Seleziona regione-</option>
     {{#each this.regionsOptions as |region|}}
         <option value={{region.value}} selected={{if (eq @region region.value) true false}} data-test-region-option={{region.value}}>{{region.label}}</option>
