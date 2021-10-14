@@ -1,11 +1,11 @@
-<div class="p-10">
-  <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4">
-    <h5 class="text-2xl" data-test-title={{@title}}>{{@title}}</h5>
-    <div class="row card-text">
-      <div class="col-10">
+<div class="p-2">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg {{if (gt @trend 0) "bg-green-500" "bg-red-500"}} text-white p-4">
+    <h5 class="text-2xl font-bold" data-test-title={{@title}}>{{@title}}</h5>
+    <div class="grid grid-cols-2">
+      <div class="w-4/5">
         <h6 class="card-subtitle text-muted mt-1" data-test-label={{@label}}>{{@label}}</h6>
       </div>
-      <div class="col-2">
+      <div class="w-1/5">
         {{#if (gt @trend 0)}}
           <FaIcon @icon="arrow-up" @class={{if @greater "text-success" "text-danger"}} data-test-trend-greater />
         {{else}}
