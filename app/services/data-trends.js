@@ -1,12 +1,21 @@
 import Service, { inject as service } from '@ember/service';
 
+import { isEmpty } from '@ember/utils';
+
 export default class DataTrendsService extends Service {
   @service store;
 
-  async getNation() {
+  async getNation(sFrom, sTo) {
     let _aNationData;
     try {
-      _aNationData = await this.store.findAll('nation');
+      if (isEmpty(sFrom) && isEmpty(sTo)) {
+        _aNationData = await this.store.findAll('nation');
+      } else {
+        _aNationData = await this.store.query('nation', {
+          from: sFrom,
+          to: sTo,
+        });
+      }
     } catch (oError) {
       _aNationData = [];
     }
