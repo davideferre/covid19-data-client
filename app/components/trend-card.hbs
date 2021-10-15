@@ -1,19 +1,19 @@
 <div class="p-2">
-  <div class="max-w-sm rounded overflow-hidden shadow-lg {{if (gt @trend 0) "bg-green-500" "bg-red-500"}} text-white p-4">
-    <h5 class="text-2xl font-bold" data-test-title={{@title}}>{{@title}}</h5>
-    <div class="grid grid-cols-2">
-      <div class="w-4/5">
-        <h6 class="card-subtitle text-muted mt-1" data-test-label={{@label}}>{{@label}}</h6>
+  <div class="max-w-sm rounded overflow-hidden shadow-lg text-white p-4 {{trend-card-color trend=@trend isGreater=@greater}}">
+    <div class="grid grid-cols-4 gap-1">
+      <div class="col-span-3">
+        <h5 class="text-2xl font-bold" data-test-title={{@title}}>{{@title}}</h5>
       </div>
-      <div class="w-1/5">
+      <div class="text-right text-xl">
         {{#if (gt @trend 0)}}
-          <FaIcon @icon="arrow-up" @class={{if @greater "text-success" "text-danger"}} data-test-trend-greater />
+          <FaIcon @icon="arrow-up" data-test-trend-greater />
         {{else}}
           {{#if (lt @trend 0)}}
-            <FaIcon @icon="arrow-down" @class={{if @greater "text-danger" "text-success"}} data-test-trend-lower />
+            <FaIcon @icon="arrow-down" data-test-trend-lower />
           {{/if}}
         {{/if}}
       </div>
     </div>
+    <h6 class="text-gray-100 mt-2" data-test-label={{@label}}>{{@label}}</h6>
   </div>
 </div>

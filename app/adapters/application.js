@@ -8,8 +8,8 @@ export default class ApplicationAdapter extends RESTAdapter {
 
   constructor() {
     super(...arguments);
-    let _oAppConfig = getOwner(this).resolveRegistration('config:environment')
-      .APP;
+    let _oAppConfig =
+      getOwner(this).resolveRegistration('config:environment').APP;
     this.host = _oAppConfig.apiBaseUrl;
     this.namespace = _oAppConfig.apiNamespace;
   }

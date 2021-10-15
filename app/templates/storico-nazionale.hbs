@@ -1,55 +1,54 @@
 {{page-title "Dati di storico nazionali"}}
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h3 class="text-center mt-2">Dati di storico nazionali</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <LinkTo @route="index">Home</LinkTo>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-striped">
+<h3 class="text-3xl text-center font-sans mt-2">
+  Dati di storico nazionali
+</h3>
+<div class="text-center mt-4">
+  <LinkTo @route="index" class="inline-block py-2 px-5 bg-blue-500 hover:bg-blue-600 text-gray-50 rounded focus:border-4 border-blue-300">
+    Home
+    <FaIcon @icon="home" />
+  </LinkTo>
+</div>
+<section class="container mx-auto p-6 font-mono">
+  <div class="w-full mb-8 overflow-hidden rounded shadow-lg">
+    <div class="w-full overflow-x-auto">
+      <table class="w-full">
         <thead>
-          <tr>
-            <th class="text-center">Data</th>
-            <th class="text-center">Nuovi positivi</th>
-            <th class="text-center">Variazione totale positivi</th>
-            <th class="text-center">Terapia intensiva</th>
-            <th class="text-center">Ingressi terapia intensiva</th>
-            <th class="text-center">Incremento tamponi</th>
-            <th class="text-center">Tasso positività</th>
-            <th class="text-center">Incremento decessi</th>
+          <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+            <th class="px-4 py-3 text-center">Data</th>
+            <th class="px-4 py-3 text-center">Nuovi positivi</th>
+            <th class="px-4 py-3 text-center">Variazione totale positivi</th>
+            <th class="px-4 py-3 text-center">Terapia intensiva</th>
+            <th class="px-4 py-3 text-center">Ingressi terapia intensiva</th>
+            <th class="px-4 py-3 text-center">Incremento tamponi</th>
+            <th class="px-4 py-3 text-center">Tasso positività</th>
+            <th class="px-4 py-3 text-center">Incremento decessi</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white">
           {{#each this.model as |day|}}
-          <tr>
-            <td class="text-center">{{date-format day.time}}</td>
-            <td class="text-center">{{day.nuovi_positivi}}</td>
+          <tr class="text-gray-700">
+            <td class="px-4 py-3 border text-center">{{date-format day.time}}</td>
+            <td class="px-4 py-3 border text-center">{{day.nuovi_positivi}}</td>
             <td
-              class="text-center{{if (lt day.variazione_totale_positivi 0) ' text-success' (if (gt day.variazione_totale_positivi 0) ' text-danger' '')}}">
-              {{day.variazione_totale_positivi}}
+              class="px-4 py-3 border text-center">
+              <span class="px-2 py-1 leading-tight rounded{{if (lt day.variazione_totale_positivi 0) ' text-green-700 bg-green-100' (if (gt day.variazione_totale_positivi 0) ' text-red-700 bg-red-100' '')}}">{{day.variazione_totale_positivi}}</span>
             </td>
             <td
-              class="text-center{{if (lt day.variazione_terapia_intensiva 0) ' text-success' (if (gt day.variazione_terapia_intensiva 0) ' text-danger' '')}}">
+              class="px-4 py-3 border text-center">
               {{day.terapia_intensiva}}
-              ({{day.variazione_terapia_intensiva}})
+              <span class="px-2 py-1 leading-tight rounded{{if (lt day.variazione_terapia_intensiva 0) ' text-green-700 bg-green-100' (if (gt day.variazione_terapia_intensiva 0) ' text-red-700 bg-red-100' '')}}">({{day.variazione_terapia_intensiva}})</span>
             </td>
-            <td class="text-center">{{day.ingressi_terapia_intensiva}}</td>
+            <td class="px-4 py-3 border text-center">{{day.ingressi_terapia_intensiva}}</td>
             <td
-              class="text-center{{if (eq day.trend_tamponi '+') ' text-success' (if (eq day.trend_tamponi '-') ' text-danger' '')}}">
-              {{day.incremento_tamponi}}
+              class="px-4 py-3 border text-center">
+              <span class="px-2 py-1 leading-tight rounded{{if (eq day.trend_tamponi '+') ' text-green-700 bg-green-100' (if (eq day.trend_tamponi '-') ' text-red-700 bg-red-100' '')}} rounded-sm">{{day.incremento_tamponi}}</span>
             </td>
-            <td class="text-center">{{day.tasso_positivi}}%</td>
-            <td class="text-center">{{day.incremento_deceduti}}</td>
+            <td class="px-4 py-3 border text-center">{{day.tasso_positivi}}%</td>
+            <td class="px-4 py-3 border text-center">{{day.incremento_deceduti}}</td>
           </tr>
           {{/each}}
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
+      </div>
+      </div>
+</section>
