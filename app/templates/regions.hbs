@@ -4,10 +4,10 @@
 </h3>
 <div class="w-full mx-auto flex items-stretch mt-4">
   <div class="w-1/2 text-center">
-    <RegionSelector @region={{this.model.firstObject.codice_regione}} class="w-full rounded border-gray-300" />
+    <RegionSelector @region={{this.model.firstObject.codice_regione}} class="w-full rounded border-gray-300 text-sm md:text-base" />
   </div>
   <div class="w-1/2 text-center inline-block align-baseline">
-    <LinkTo @route="index" class="inline-block py-2 px-5 bg-blue-500 hover:bg-blue-600 text-gray-50 rounded focus:border-4 border-blue-300">
+    <LinkTo @route="index" class="inline-block text-sm md:text-base py-2 px-5 bg-blue-500 hover:bg-blue-600 text-gray-50 rounded focus:border-4 border-blue-300">
       Dati nazionali
       <FaIcon @icon="file-medical-alt" />
     </LinkTo>

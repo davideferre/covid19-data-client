@@ -1,17 +1,17 @@
-<div class="flex justify-center mt-2">
-  <div class="w-1/6">
+<div class="grid grid-cols-1 md:grid-cols-2 place-items-center lg:flex lg:justify-center mt-2">
+  <div class="w-full lg:w-1/6">
     <TrendCard @title={{@data.firstObject.nuovi_positivi}} @label="Nuovi positivi" @trend={{@data.firstObject.trend_nuovi_positivi}} @greater={{false}} />
   </div>
-  <div class="w-1/6">
+  <div class="w-full lg:w-1/6">
     <TrendCard @title={{@data.firstObject.incremento_tamponi}} @label="Tamponi" @trend={{@data.firstObject.trend_tamponi}} @greater={{true}} />
   </div>
-  <div class="w-1/6">
+  <div class="w-full lg:w-1/6">
     <TrendCard @title={{concat @data.firstObject.tasso_positivi '%'}} @label="Tasso positivi" @trend={{@data.firstObject.trend_tasso_positivi}} @greater={{false}} />
   </div>
-  <div class="w-1/6">
+  <div class="w-full lg:w-1/6">
     <TrendCard @title={{@data.firstObject.incremento_deceduti}} @label="Deceduti" @trend={{@data.firstObject.trend_deceduti}} @greater={{false}} />
   </div>
-  <div class="w-auto">
+  <div class="w-full lg:w-auto">
     <div class="p-2">
       <div class="max-w-sm rounded overflow-hidden shadow-lg {{if (gte @data.firstObject.variazione_terapia_intensiva 0) "bg-red-500" "bg-green-500"}} text-white p-4">
         <h5 class="text-2xl" data-test-title="Terapie intensive">Terapie intensive</h5>
@@ -34,15 +34,13 @@
     </div>
   </div>
 </div>
-<div class="grid grid-cols-2 mt-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 mt-8">
   <div>
     <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
   </div>
   <div>
     <Chart @id="tasso-positivi" @type="line" @data={{@data}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
   </div>
-</div>
-<div class="grid grid-cols-2 mt-4">
   <div>
     <Chart @id="terapie-intensivo" @type="line" @data={{@data}} @dataKey="terapia_intensiva"
       @label="Terapie intensive" @color="#4BC0C0"></Chart>
