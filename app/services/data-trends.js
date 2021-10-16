@@ -5,15 +5,14 @@ import { isEmpty } from '@ember/utils';
 export default class DataTrendsService extends Service {
   @service store;
 
-  async getNation(sFrom, sTo) {
+  async getNation(iLimit) {
     let _aNationData;
     try {
-      if (isEmpty(sFrom) && isEmpty(sTo)) {
+      if (isEmpty(iLimit)) {
         _aNationData = await this.store.findAll('nation');
       } else {
         _aNationData = await this.store.query('nation', {
-          from: sFrom,
-          to: sTo,
+          limit: iLimit,
         });
       }
     } catch (oError) {
@@ -22,7 +21,7 @@ export default class DataTrendsService extends Service {
     return this._getTrends(_aNationData);
   }
 
-  async getRegion(sRegionCode) {
+  async getRegion(sRegionCode, sLimit) {
     let _aRegionData;
     try {
       _aRegionData = await this.store.query('region', {
@@ -35,37 +34,55 @@ export default class DataTrendsService extends Service {
   }
 
   _getTrends(aData) {
-    let _nNuoviPositiviOld = 0;
-    let _nTamponiOld = 0;
-    let _nIncrementoTamponiOld = 0;
-    let _nDecedutiOld = 0;
-    let _nIncrementoDecedutiOld = 0;
-    let _nTerapiaIntensivaOld = 0;
-    let _nTassoPositiviOld = 0;
+    let _nNuoviPositiviOld;
+    let _nTamponiOld;
+    let _nIncrementoTamponiOld;
+    let _nDecedutiOld;
+    let _nIncrementoDecedutiOld;
+    let _nTerapiaIntensivaOld;
+    let _nTassoPositiviOld;
     let _aData = [];
     aData.forEach((oData) => {
       if (oData.nuovi_positivi) {
-        oData['trend_nuovi_positivi'] =
-          oData.nuovi_positivi - _nNuoviPositiviOld;
+        if (isEmpty(_nNuoviPositiviOld)) {
+          oData['trend_nuovi_positivi'] = 0;
+        } else {
+          oData['trend_nuovi_positivi'] =
+            oData.nuovi_positivi - _nNuoviPositiviOld;
+        }
         _nNuoviPositiviOld = oData.nuovi_positivi;
       }
       if (oData.tamponi) {
-        oData['incremento_tamponi'] = oData.tamponi - _nTamponiOld;
-        oData['trend_tamponi'] =
-          oData.incremento_tamponi - _nIncrementoTamponiOld;
+        if (isEmpty(_nTamponiOld)) {
+          oData['incremento_tamponi'] = 0;
+          oData['trend_tamponi'] = 0;
+        } else {
+          oData['incremento_tamponi'] = oData.tamponi - _nTamponiOld;
+          oData['trend_tamponi'] =
+            oData.incremento_tamponi - _nIncrementoTamponiOld;
+        }
         _nIncrementoTamponiOld = oData.incremento_tamponi;
         _nTamponiOld = oData.tamponi;
       }
       if (oData.deceduti) {
-        oData['incremento_deceduti'] = oData.deceduti - _nDecedutiOld;
+        if (isEmpty(_nDecedutiOld)) {
+          oData['incremento_deceduti'] = 0;
+          oData['trend_deceduti'] = 0;
+        } else {
+          oData['incremento_deceduti'] = oData.deceduti - _nDecedutiOld;
+          oData['trend_deceduti'] =
+            oData.incremento_deceduti - _nIncrementoDecedutiOld;
+        }
         _nDecedutiOld = oData.deceduti;
-        oData['trend_deceduti'] =
-          oData.incremento_deceduti - _nIncrementoDecedutiOld;
         _nIncrementoDecedutiOld = oData.incremento_deceduti;
       }
       if (oData.terapia_intensiva) {
-        oData['variazione_terapia_intensiva'] =
-          oData.terapia_intensiva - _nTerapiaIntensivaOld;
+        if (isEmpty(_nTerapiaIntensivaOld)) {
+          oData['variazione_terapia_intensiva'] = 0;
+        } else {
+          oData['variazione_terapia_intensiva'] =
+            oData.terapia_intensiva - _nTerapiaIntensivaOld;
+        }
         _nTerapiaIntensivaOld = oData.terapia_intensiva;
       }
       if (oData.nuovi_positivi && oData.incremento_tamponi) {
@@ -73,8 +90,15 @@ export default class DataTrendsService extends Service {
           Math.floor(
             (oData.nuovi_positivi / oData.incremento_tamponi) * 10000
           ) / 100;
-        oData['trend_tasso_positivi'] =
-          oData.tasso_positivi - _nTassoPositiviOld;
+        if (oData.tasso_positivi < 0) {
+          oData['tasso_positivi'] = 0;
+        }
+        if (isEmpty(_nTassoPositiviOld)) {
+          oData['trend_tasso_positivi'] = 0;
+        } else {
+          oData['trend_tasso_positivi'] =
+            oData.tasso_positivi - _nTassoPositiviOld;
+        }
         _nTassoPositiviOld = oData.tasso_positivi;
       }
       _aData.unshift(oData);

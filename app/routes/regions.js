@@ -6,6 +6,6 @@ export default class RegionsRoute extends Route {
   @service dataTrends;
 
   async model(params) {
-    return this.dataTrends.getRegion(params.region);
+    return this.dataTrends.getRegion(params.region, 2);
   }
 }

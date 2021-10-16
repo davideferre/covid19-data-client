@@ -1,29 +1,29 @@
 <div class="flex justify-center mt-2">
   <div class="w-1/6">
-    <TrendCard @title={{this.trendsData.firstObject.nuovi_positivi}} @label="Nuovi positivi" @trend={{this.trendsData.firstObject.trend_nuovi_positivi}} @greater={{false}} />
+    <TrendCard @title={{@data.firstObject.nuovi_positivi}} @label="Nuovi positivi" @trend={{@data.firstObject.trend_nuovi_positivi}} @greater={{false}} />
   </div>
   <div class="w-1/6">
-    <TrendCard @title={{this.trendsData.firstObject.incremento_tamponi}} @label="Tamponi" @trend={{this.trendsData.firstObject.trend_tamponi}} @greater={{true}} />
+    <TrendCard @title={{@data.firstObject.incremento_tamponi}} @label="Tamponi" @trend={{@data.firstObject.trend_tamponi}} @greater={{true}} />
   </div>
   <div class="w-1/6">
-    <TrendCard @title={{concat this.trendsData.firstObject.tasso_positivi '%'}} @label="Tasso positivi" @trend={{this.trendsData.firstObject.trend_tasso_positivi}} @greater={{false}} />
+    <TrendCard @title={{concat @data.firstObject.tasso_positivi '%'}} @label="Tasso positivi" @trend={{@data.firstObject.trend_tasso_positivi}} @greater={{false}} />
   </div>
   <div class="w-1/6">
-    <TrendCard @title={{this.trendsData.firstObject.incremento_deceduti}} @label="Deceduti" @trend={{this.trendsData.firstObject.trend_deceduti}} @greater={{false}} />
+    <TrendCard @title={{@data.firstObject.incremento_deceduti}} @label="Deceduti" @trend={{@data.firstObject.trend_deceduti}} @greater={{false}} />
   </div>
   <div class="w-auto">
     <div class="p-2">
-      <div class="max-w-sm rounded overflow-hidden shadow-lg {{if (gte this.trendsData.firstObject.variazione_terapia_intensiva 0) "bg-red-500" "bg-green-500"}} text-white p-4">
+      <div class="max-w-sm rounded overflow-hidden shadow-lg {{if (gte @data.firstObject.variazione_terapia_intensiva 0) "bg-red-500" "bg-green-500"}} text-white p-4">
         <h5 class="text-2xl" data-test-title="Terapie intensive">Terapie intensive</h5>
           <div class="grid grid-cols-2 mt-2 text-gray-100">
             <div>
               <label class="subpixel-antialiased">Ingressi:</label>
-              <span class="font-bold">{{this.trendsData.firstObject.ingressi_terapia_intensiva}}</span>
+              <span class="font-bold">{{@data.firstObject.ingressi_terapia_intensiva}}</span>
             </div>
             <div>
               <label class="subpixel-antialiased">Variazione:</label>
-              <span class="font-bold">{{this.trendsData.firstObject.variazione_terapia_intensiva}}</span>
-              {{#if (gte this.trendsData.firstObject.variazione_terapia_intensiva 0)}}
+              <span class="font-bold">{{@data.firstObject.variazione_terapia_intensiva}}</span>
+              {{#if (gte @data.firstObject.variazione_terapia_intensiva 0)}}
                 <FaIcon @icon="arrow-up" data-test-trend-greater />
               {{else}}
                 <FaIcon @icon="arrow-down" data-test-trend-lower />
@@ -36,19 +36,19 @@
 </div>
 <div class="grid grid-cols-2 mt-8">
   <div>
-    <Chart @id="nuovi-positivi" @type="line" @data={{this.chartData}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
+    <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
   </div>
   <div>
-    <Chart @id="tasso-positivi" @type="line" @data={{this.chartData}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
+    <Chart @id="tasso-positivi" @type="line" @data={{@data}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
   </div>
 </div>
 <div class="grid grid-cols-2 mt-4">
   <div>
-    <Chart @id="terapie-intensivo" @type="line" @data={{this.chartData}} @dataKey="terapia_intensiva"
+    <Chart @id="terapie-intensivo" @type="line" @data={{@data}} @dataKey="terapia_intensiva"
       @label="Terapie intensive" @color="#4BC0C0"></Chart>
   </div>
   <div>
-    <Chart @id="incremento-deceduti" @type="line" @data={{this.chartData}} @dataKey="incremento_deceduti"
+    <Chart @id="incremento-deceduti" @type="line" @data={{@data}} @dataKey="incremento_deceduti"
       @label="Incremento deceduti" @color="#333538"></Chart>
   </div>
 </div>
