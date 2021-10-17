@@ -6,6 +6,6 @@ export default class IndexRoute extends Route {
   @service dataTrends;
 
   async model() {
-    return this.dataTrends.getNation();
+    return this.dataTrends.getNation(2);
   }
 }
