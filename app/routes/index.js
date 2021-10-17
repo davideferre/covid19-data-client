@@ -6,6 +6,12 @@ import { isEmpty } from '@ember/utils';
 export default class IndexRoute extends Route {
   @service dataTrends;
 
+  queryParams = {
+    period: {
+      refreshModel: true,
+    },
+  };
+
   async model(params) {
     if (isEmpty(params.period)) {
       params.period = '30';

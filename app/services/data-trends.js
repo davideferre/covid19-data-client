@@ -22,11 +22,16 @@ export default class DataTrendsService extends Service {
   }
 
   async getRegion(sRegionCode, sLimit) {
+    let _aRegionQueryParams = {};
+    if (!isEmpty(sRegionCode)) {
+      _aRegionQueryParams['region'] = sRegionCode;
+    }
+    if (!isEmpty(sLimit)) {
+      _aRegionQueryParams['limit'] = sLimit;
+    }
     let _aRegionData;
     try {
-      _aRegionData = await this.store.query('region', {
-        region: sRegionCode,
-      });
+      _aRegionData = await this.store.query('region', _aRegionQueryParams);
     } catch (oError) {
       _aRegionData = [];
     }

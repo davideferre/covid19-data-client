@@ -54,15 +54,17 @@ export default class ChartComponent extends Component {
 
   _createChartElement() {
     if (this.chart) {
-      this.chart.destroy();
-      this.chart = null;
+      this.chart.data = this.chartData;
+      this.chart.type = this.args.type;
+      this.chart.update();
+    } else {
+      this.chart = new Chart(this.chartCanvas, {
+        type: this.args.type,
+        data: this.chartData,
+        options: this._getChartOptions(),
+        plugins: [],
+      });
     }
-    this.chart = new Chart(this.chartCanvas, {
-      type: this.args.type,
-      data: this.chartData,
-      options: this._getChartOptions(),
-      plugins: [],
-    });
   }
 
   _getChartOptions() {
