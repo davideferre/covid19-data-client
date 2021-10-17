@@ -1,5 +1,7 @@
 import Component from '@glimmer/component';
 
+import { action } from '@ember/object';
+
 import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 
@@ -14,16 +16,16 @@ export default class ChartComponent extends Component {
     Chart.register(...registerables);
   }
 
-  onRender(oElement, oParameters) {
-    let _self = oParameters[0];
-    _self.chartCanvas = oElement;
-    _self._drawChart();
+  @action
+  onRender(oElement) {
+    this.chartCanvas = oElement;
+    this._drawChart();
   }
 
-  onUpdate(oElement, oParameters) {
-    let _self = oParameters[0];
-    _self.chartCanvas = oElement;
-    _self._drawChart();
+  @action
+  onUpdate(oElement) {
+    this.chartCanvas = oElement;
+    this._drawChart();
   }
 
   _drawChart() {

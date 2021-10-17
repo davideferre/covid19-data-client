@@ -34,19 +34,36 @@
     </div>
   </div>
 </div>
+<div class="flex justify-center rounded text mt-8" role="group">
+    <LinkTo @route={{@route}} @query={{hash period='30'}} type="button" role="button" class="bg-blue-500 text-gray-50 text-sm border border-r-0 border-blue-500 rounded-l px-2 py-1 mx-0 inline-block outline-none focus:shadow-outline">
+      30 giorni
+    </LinkTo>
+    <LinkTo @route={{@route}} @query={{hash period='90'}} type="button" role="button" class="bg-white text-blue-500 hover:bg-blue-500 hover:text-gray-50 text-sm border border-blue-500 px-2 py-1 mx-0 inline-block outline-none focus:shadow-outline">
+      3 mesi
+    </LinkTo>
+    <LinkTo @route={{@route}} @query={{hash period='182'}} type="button" role="button" class="bg-white text-blue-500 hover:bg-blue-500 hover:text-gray-50 text-sm border border-l-0 border-blue-500 px-2 py-1 mx-0 inline-block outline-none focus:shadow-outline">
+      6 mesi
+    </LinkTo>
+    <LinkTo @route={{@route}} @query={{hash period='365'}} type="button" role="button" class="bg-white text-blue-500 hover:bg-blue-500 hover:text-gray-50 text-sm border border-l-0 border-blue-500 px-2 py-1 mx-0 inline-block outline-none focus:shadow-outline">
+      1 anno
+    </LinkTo>
+    <LinkTo @route={{@route}} @query={{hash period='all'}} type="button" role="button" class="bg-white text-blue-500 hover:bg-blue-500 hover:text-gray-50 text-sm border border-l-0 border-blue-500 rounded-r px-2 py-1 mx-0 inline-block outline-none focus:shadow-outline">
+      inizio pandemia
+    </LinkTo>
+  </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 mt-8">
   <div>
-    <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
+    <Chart @id="nuovi-positivi" @type="line" @data={{@data}} @period={{@period}} @dataKey="nuovi_positivi" @label="Nuovi positivi" @color="#F66384"></Chart>
   </div>
   <div>
-    <Chart @id="tasso-positivi" @type="line" @data={{@data}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
+    <Chart @id="tasso-positivi" @type="line" @data={{@data}} @period={{@period}} @dataKey="tasso_positivi" @label="Tasso positivi" @color="#36A2EB"></Chart>
   </div>
   <div>
-    <Chart @id="terapie-intensivo" @type="line" @data={{@data}} @dataKey="terapia_intensiva"
+    <Chart @id="terapie-intensivo" @type="line" @data={{@data}} @period={{@period}} @dataKey="terapia_intensiva"
       @label="Terapie intensive" @color="#4BC0C0"></Chart>
   </div>
   <div>
-    <Chart @id="incremento-deceduti" @type="line" @data={{@data}} @dataKey="incremento_deceduti"
+    <Chart @id="incremento-deceduti" @type="line" @data={{@data}} @period={{@period}} @dataKey="incremento_deceduti"
       @label="Incremento deceduti" @color="#333538"></Chart>
   </div>
 </div>
