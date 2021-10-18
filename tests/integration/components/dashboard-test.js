@@ -12,8 +12,6 @@ module('Integration | Component | dashboard', function (hooks) {
 
     await render(hbs`<Dashboard />`);
 
-    assert.dom('.card-subtitle').exists({ count: 4 });
-
     assert.dom('[data-test-label="Nuovi positivi"]').exists();
     assert.dom('[data-test-label="Tamponi"]').exists();
     assert.dom('[data-test-label="Tasso positivi"]').exists();

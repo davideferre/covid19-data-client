@@ -31,7 +31,7 @@ module('Integration | Component | trend-card', function (hooks) {
 
     assert.dom('[data-test-trend-greater]').exists();
     assert.dom('[data-test-trend-lower]').doesNotExist();
-    assert.dom('[data-test-trend-greater]').hasClass('text-success');
+    assert.dom('[data-test-trend-card]').hasClass('bg-green-500');
   });
 
   test('it renders greater trend with lower option', async function (assert) {
@@ -46,7 +46,7 @@ module('Integration | Component | trend-card', function (hooks) {
 
     assert.dom('[data-test-trend-greater]').exists();
     assert.dom('[data-test-trend-lower]').doesNotExist();
-    assert.dom('[data-test-trend-greater]').hasClass('text-danger');
+    assert.dom('[data-test-trend-card]').hasClass('bg-red-500');
   });
 
   test('it renders lower trend with greater option', async function (assert) {
@@ -61,7 +61,7 @@ module('Integration | Component | trend-card', function (hooks) {
 
     assert.dom('[data-test-trend-lower]').exists();
     assert.dom('[data-test-trend-greater]').doesNotExist();
-    assert.dom('[data-test-trend-lower]').hasClass('text-danger');
+    assert.dom('[data-test-trend-card]').hasClass('bg-red-500');
   });
 
   test('it renders lower trend with lower option', async function (assert) {
@@ -76,7 +76,7 @@ module('Integration | Component | trend-card', function (hooks) {
 
     assert.dom('[data-test-trend-lower]').exists();
     assert.dom('[data-test-trend-greater]').doesNotExist();
-    assert.dom('[data-test-trend-lower]').hasClass('text-success');
+    assert.dom('[data-test-trend-card]').hasClass('bg-green-500');
   });
 
   test('it renders zero trend', async function (assert) {
