@@ -20,6 +20,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
+* *NB*: Due to `ember-get-config` incompatibility with embroider and used by `ember-fontawesome` you have to reply the addon/components/fa-icon.js modification suggested by nullvoxpopuli on [PR 174](https://github.com/FortAwesome/ember-fontawesome/pull/174/files) in the @fortawesome/ember-fontawesome node_modules package
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
