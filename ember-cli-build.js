@@ -59,5 +59,23 @@ module.exports = function (defaults) {
   );
 
   const { Webpack } = require('@embroider/webpack');
-  return require('@embroider/compat').compatBuild(app, Webpack);
+  // return require('@embroider/compat').compatBuild(app, Webpack);
+  const { ESBuildMinifyPlugin } = require('esbuild-loader');
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    packagerOptions: {
+      webpackConfig: {
+        optimization: {
+          minimizer: [
+            new ESBuildMinifyPlugin({
+              legalComments: 'none',
+              sourcemap: false,
+              minify: isProduction,
+              css: true,
+              exclude: [],
+            }),
+          ],
+        },
+      },
+    },
+  });
 };
