@@ -69,6 +69,8 @@ export default class ChartComponent extends Component {
 
   _getChartOptions() {
     return {
+      normalize: false,
+      parsing: false,
       responsive: true,
       scales: {
         x: {

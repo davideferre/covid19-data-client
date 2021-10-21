@@ -41,10 +41,26 @@
             <td class="px-4 py-3 border text-center">{{day.ingressi_terapia_intensiva}}</td>
             <td
               class="px-4 py-3 border text-center">
-              <span class="px-2 py-1 leading-tight rounded{{if (eq day.trend_tamponi '+') ' text-green-700 bg-green-100' (if (eq day.trend_tamponi '-') ' text-red-700 bg-red-100' '')}} rounded-sm">{{day.incremento_tamponi}}</span>
+              {{#if day.incremento_tamponi}}
+                <span class="px-2 py-1 leading-tight rounded{{if (gt day.trend_tamponi 0) ' text-green-700 bg-green-100' (if (lt day.trend_tamponi 0) ' text-red-700 bg-red-100' '')}} rounded-sm">{{day.incremento_tamponi}}</span>
+              {{else}}
+                -
+              {{/if}}
             </td>
-            <td class="px-4 py-3 border text-center">{{day.tasso_positivi}}%</td>
-            <td class="px-4 py-3 border text-center">{{day.incremento_deceduti}}</td>
+            <td class="px-4 py-3 border text-center">
+              {{#if day.tasso_positivi}}
+                {{day.tasso_positivi}}%
+              {{else}}
+                -
+              {{/if}}
+            </td>
+            <td class="px-4 py-3 border text-center">
+              {{#if day.incremento_deceduti}}
+                {{day.incremento_deceduti}}
+              {{else}}
+                -
+              {{/if}}
+            </td>
           </tr>
           {{/each}}
         </tbody>

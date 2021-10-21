@@ -50,7 +50,7 @@ export default class DataTrendsService extends Service {
     aData.forEach((oData) => {
       if (oData.nuovi_positivi) {
         if (isEmpty(_nNuoviPositiviOld)) {
-          oData['trend_nuovi_positivi'] = 0;
+          oData['trend_nuovi_positivi'] = null;
         } else {
           oData['trend_nuovi_positivi'] =
             oData.nuovi_positivi - _nNuoviPositiviOld;
@@ -59,8 +59,8 @@ export default class DataTrendsService extends Service {
       }
       if (oData.tamponi) {
         if (isEmpty(_nTamponiOld)) {
-          oData['incremento_tamponi'] = 0;
-          oData['trend_tamponi'] = 0;
+          oData['incremento_tamponi'] = null;
+          oData['trend_tamponi'] = null;
         } else {
           oData['incremento_tamponi'] = oData.tamponi - _nTamponiOld;
           oData['trend_tamponi'] =
@@ -71,8 +71,8 @@ export default class DataTrendsService extends Service {
       }
       if (oData.deceduti) {
         if (isEmpty(_nDecedutiOld)) {
-          oData['incremento_deceduti'] = 0;
-          oData['trend_deceduti'] = 0;
+          oData['incremento_deceduti'] = null;
+          oData['trend_deceduti'] = null;
         } else {
           oData['incremento_deceduti'] = oData.deceduti - _nDecedutiOld;
           oData['trend_deceduti'] =
@@ -83,7 +83,7 @@ export default class DataTrendsService extends Service {
       }
       if (oData.terapia_intensiva) {
         if (isEmpty(_nTerapiaIntensivaOld)) {
-          oData['variazione_terapia_intensiva'] = 0;
+          oData['variazione_terapia_intensiva'] = null;
         } else {
           oData['variazione_terapia_intensiva'] =
             oData.terapia_intensiva - _nTerapiaIntensivaOld;
