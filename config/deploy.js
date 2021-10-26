@@ -19,6 +19,10 @@ module.exports = (deployTarget) => {
       dir: process.env.DESTINATION_DIR,
       keep: 2,
     };
+
+    ENV['revision-data'] = {
+      type: 'version-commit',
+    };
   }
 
   return ENV;
