@@ -9,7 +9,7 @@ export default class DataTrendsService extends Service {
     let _aNationData;
     try {
       if (isEmpty(iLimit)) {
-        _aNationData = await this.store.findAll('nation');
+        _aNationData = await this.store.findAll('nation', { reload: true });
       } else {
         _aNationData = await this.store.query('nation', {
           limit: iLimit,
