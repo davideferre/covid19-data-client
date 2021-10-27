@@ -36,8 +36,10 @@ export default class ChartComponent extends Component {
       return;
     }
     this.args.data.forEach((oData) => {
-      _aLabels.push(oData.time);
-      _aModelData.push({ x: oData.time, y: oData[_sDataKey] });
+      if (!_aModelData.includes((oElem) => oElem.x === oData.time)) {
+        _aLabels.push(oData.time);
+        _aModelData.push({ x: oData.time, y: oData[_sDataKey] });
+      }
     });
     let _aDataset = {
       label: this.args.label,

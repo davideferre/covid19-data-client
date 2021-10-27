@@ -8,6 +8,7 @@ export default class DataTrendsService extends Service {
   async getNation(iLimit) {
     let _aNationData;
     try {
+      this.store.unloadAll('nation');
       if (isEmpty(iLimit)) {
         _aNationData = await this.store.findAll('nation', { reload: true });
       } else {
@@ -31,6 +32,7 @@ export default class DataTrendsService extends Service {
     }
     let _aRegionData;
     try {
+      this.store.unloadAll('region');
       _aRegionData = await this.store.query('region', _aRegionQueryParams);
     } catch (oError) {
       _aRegionData = [];
@@ -49,19 +51,14 @@ export default class DataTrendsService extends Service {
     let _aData = [];
     aData.forEach((oData) => {
       if (oData.nuovi_positivi) {
-        if (isEmpty(_nNuoviPositiviOld)) {
-          oData['trend_nuovi_positivi'] = null;
-        } else {
+        if (!isEmpty(_nNuoviPositiviOld)) {
           oData['trend_nuovi_positivi'] =
             oData.nuovi_positivi - _nNuoviPositiviOld;
         }
         _nNuoviPositiviOld = oData.nuovi_positivi;
       }
       if (oData.tamponi) {
-        if (isEmpty(_nTamponiOld)) {
-          oData['incremento_tamponi'] = null;
-          oData['trend_tamponi'] = null;
-        } else {
+        if (!isEmpty(_nTamponiOld)) {
           oData['incremento_tamponi'] = oData.tamponi - _nTamponiOld;
           oData['trend_tamponi'] =
             oData.incremento_tamponi - _nIncrementoTamponiOld;
@@ -70,21 +67,16 @@ export default class DataTrendsService extends Service {
         _nTamponiOld = oData.tamponi;
       }
       if (oData.deceduti) {
-        if (isEmpty(_nDecedutiOld)) {
-          oData['incremento_deceduti'] = null;
-          oData['trend_deceduti'] = null;
-        } else {
+        if (!isEmpty(_nDecedutiOld)) {
           oData['incremento_deceduti'] = oData.deceduti - _nDecedutiOld;
           oData['trend_deceduti'] =
             oData.incremento_deceduti - _nIncrementoDecedutiOld;
         }
-        _nDecedutiOld = oData.deceduti;
         _nIncrementoDecedutiOld = oData.incremento_deceduti;
+        _nDecedutiOld = oData.deceduti;
       }
       if (oData.terapia_intensiva) {
-        if (isEmpty(_nTerapiaIntensivaOld)) {
-          oData['variazione_terapia_intensiva'] = null;
-        } else {
+        if (!isEmpty(_nTerapiaIntensivaOld)) {
           oData['variazione_terapia_intensiva'] =
             oData.terapia_intensiva - _nTerapiaIntensivaOld;
         }
@@ -98,9 +90,7 @@ export default class DataTrendsService extends Service {
         if (oData.tasso_positivi < 0) {
           oData['tasso_positivi'] = 0;
         }
-        if (isEmpty(_nTassoPositiviOld)) {
-          oData['trend_tasso_positivi'] = 0;
-        } else {
+        if (!isEmpty(_nTassoPositiviOld)) {
           oData['trend_tasso_positivi'] =
             oData.tasso_positivi - _nTassoPositiviOld;
         }
