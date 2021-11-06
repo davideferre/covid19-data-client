@@ -73,6 +73,6 @@ case "$1" in
     remove "$2"
     ;;
   *)
-    echo "Usage: $0 {deploy | activate REVISION}"
+    echo "Usage: $0 {deploy | activate REVISION | list | remove REVISION}"
     exit 1
 esac
