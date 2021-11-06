@@ -47,8 +47,6 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.APP.apiBaseUrl = 'https://covid19.davideferrero.com';
-    ENV.APP.apiNamespace = 'api/v1/data';
   }
 
   return ENV;

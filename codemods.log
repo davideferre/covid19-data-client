@@ -1,7 +1,0 @@
-2021-10-09T12:26:49.676Z [warn] WARNING: {{page-title}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/storico-nazionale.hbs
-2021-10-09T12:26:49.691Z [warn] WARNING: {{date-format}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/storico-nazionale.hbs
-2021-10-09T12:26:49.708Z [warn] WARNING: {{page-title}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/index.hbs
-2021-10-09T12:26:49.787Z [warn] WARNING: {{date-format}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/index.hbs
-2021-10-09T12:26:49.848Z [warn] WARNING: {{page-title}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/regions.hbs
-2021-10-09T12:26:49.849Z [warn] WARNING: {{date-format}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/regions.hbs
-2021-10-09T12:26:49.934Z [warn] WARNING: {{page-title}} was not converted as it has positional parameters which can't be automatically converted. Source: app/templates/application.hbs
