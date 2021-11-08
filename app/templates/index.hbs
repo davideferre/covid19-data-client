@@ -1,16 +1,18 @@
 {{page-title "Riepilogo"}}
-<h3 class="text-3xl text-center font-sans mt-2">
+<h1 class="text-3xl text-center font-sans mt-2">
   Andamento nazionale - {{date-format this.model.firstObject.time}}
-</h3>
-<div class="grid grid-cols-2 mt-4">
+</h1>
+<nav class="grid grid-cols-2 mt-4">
   <div class="w-auto">
     <RegionSelector class="w-full rounded border-gray-300 text-sm md:text-base" />
   </div>
   <div class="w-auto text-center">
-    <LinkTo @route="storico-nazionale" class="inline-block text-sm md:text-base py-2 px-5 bg-blue-500 hover:bg-blue-600 text-gray-50 rounded focus:border-4 border-blue-300 no-underline">
+    <LinkTo @route="storico-nazionale" role="button" class="inline-block text-sm md:text-base py-2 px-5 bg-blue-500 hover:bg-blue-600 text-gray-50 rounded focus:border-4 border-blue-300 no-underline">
       Dati di storico
       <FaIcon @icon="history" />
     </LinkTo>
   </div>
-</div>
-<Dashboard @data={{this.model}} @route='index' @period={{this.period}}/>
+</nav>
+<main>
+  <Dashboard @data={{this.model}} @route='index' @period={{this.period}}/>
+</main>
