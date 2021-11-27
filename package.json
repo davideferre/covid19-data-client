@@ -1,6 +1,6 @@
 {
   "name": "covid19-data-client",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "private": true,
   "description": "Small description for covid19-data-client goes here",
   "repository": "",
@@ -26,6 +26,9 @@
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^1.0.2",
     "@ember/test-helpers": "^2.4.2",
+    "@embroider/compat": "^0.47.2",
+    "@embroider/core": "^0.47.2",
+    "@embroider/webpack": "^0.47.2",
     "@fortawesome/ember-fontawesome": "^0.2.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@glimmer/component": "^1.0.4",
@@ -36,7 +39,7 @@
     "chart.js": "^3.5.1",
     "chartjs-adapter-date-fns": "^1.1.0-beta.1",
     "date-fns": "^2.25.0",
-    "ember-auto-import": "^1.11.3",
+    "ember-auto-import": "^2.2.4",
     "ember-cli": "~3.28.4",
     "ember-cli-app-version": "^5.0.0",
     "ember-cli-babel": "^7.26.6",
@@ -69,7 +72,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
     "qunit": "^2.16.0",
-    "qunit-dom": "^1.6.0"
+    "qunit-dom": "^1.6.0",
+    "webpack": "^5.64.4"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
