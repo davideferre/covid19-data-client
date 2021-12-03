@@ -1,8 +1,12 @@
 'use strict';
 
-module.exports = function(/* environment, appConfig */) {
+module.exports = function (environment) {
   // See https://zonkyio.github.io/ember-web-app for a list of
   // supported properties
+
+  if (environment !== 'production') {
+    return {};
+  }
 
   return {
     name: 'Dati COVID 19 Italia',
@@ -10,7 +14,7 @@ module.exports = function(/* environment, appConfig */) {
     description: 'Riepilogo dei dati COVID 19 in Italia',
     start_url: '/',
     scope: '/',
-    display: 'fullscreen',
+    display: 'standalone',
     orientation: 'portrait',
     lang: 'it-IT',
     background_color: '#fff',
