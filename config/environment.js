@@ -22,6 +22,11 @@ module.exports = function (environment) {
       // when it is created
       apiBaseUrl: process.env.API_BASE_URL,
       apiNamespace: process.env.API_NAMESPACE,
+      environment: environment,
+    },
+
+    'ember-service-worker-update-notify': {
+      pollingInterval: 600000,
     },
   };
 
