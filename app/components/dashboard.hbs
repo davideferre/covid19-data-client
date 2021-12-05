@@ -13,8 +13,8 @@
   </div>
   <div class="w-full lg:w-auto">
     <div class="p-2">
-      <div class="max-w-sm rounded overflow-hidden shadow-lg {{if (gte @data.firstObject.variazione_terapia_intensiva 0) "bg-red-500" "bg-green-500"}} text-white p-4">
-        <h5 class="text-2xl" data-test-title="Terapie intensive">Terapie intensive</h5>
+      <div class="max-w-sm rounded overflow-hidden shadow-lg {{trend-card-color @data.firstObject.variazione_terapia_intensiva isGreater=false}} text-white p-4">
+        <div class="text-2xl" data-test-title="Terapie intensive">Terapie intensive</div>
           <div class="grid grid-cols-2 mt-2 text-white">
             <div>
               <label class="subpixel-antialiased">Ingressi:</label>
@@ -35,19 +35,19 @@
   </div>
 </div>
 <div class="flex justify-center rounded text mt-8" role="group">
-    <LinkTo @route={{@route}} @query={{hash period='30'}} type="button" role="button" class="{{if (eq @period '30') 'pointer-events-none bg-blue-500 text-white' 'bg-white text-blue-500 hover:bg-blue-500 hover:text-white'}} text-sm border border-r-0 border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 lg:rounded-l px-2 py-1 mx-0 inline-block no-underline outline-none">
+    <LinkTo @route={{@route}} @query={{hash period='30'}} type="button" role="button" class="{{if (eq @period '30') 'pointer-events-none bg-blue-700 text-white' 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white'}} text-sm border border-r-0 border-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-700 focus:ring-opacity-50 lg:rounded-l px-2 py-1 mx-0 inline-block no-underline outline-none">
       30 giorni
     </LinkTo>
-    <LinkTo @route={{@route}} @query={{hash period='90'}} type="button" role="button" class="{{if (eq @period '90') 'pointer-events-none bg-blue-500 text-white' 'bg-white text-blue-500 hover:bg-blue-500 hover:text-white'}} text-sm border border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 px-2 py-1 mx-0 inline-block no-underline outline-none">
+    <LinkTo @route={{@route}} @query={{hash period='90'}} type="button" role="button" class="{{if (eq @period '90') 'pointer-events-none bg-blue-700 text-white' 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white'}} text-sm border border-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-700 focus:ring-opacity-50 px-2 py-1 mx-0 inline-block no-underline outline-none">
       3 mesi
     </LinkTo>
-    <LinkTo @route={{@route}} @query={{hash period='182'}} type="button" role="button" class="{{if (eq @period '182') 'pointer-events-none bg-blue-500 text-white' 'bg-white text-blue-500 hover:bg-blue-500 hover:text-white'}} text-sm border border-l-0 border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 px-2 py-1 mx-0 inline-block no-underline outline-none">
+    <LinkTo @route={{@route}} @query={{hash period='182'}} type="button" role="button" class="{{if (eq @period '182') 'pointer-events-none bg-blue-700 text-white' 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white'}} text-sm border border-l-0 border-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-700 focus:ring-opacity-50 px-2 py-1 mx-0 inline-block no-underline outline-none">
       6 mesi
     </LinkTo>
-    <LinkTo @route={{@route}} @query={{hash period='365'}} type="button" role="button" class="{{if (eq @period '365') 'pointer-events-none bg-blue-500 text-white' 'bg-white text-blue-500 hover:bg-blue-500 hover:text-white'}} text-sm border border-l-0 border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 px-2 py-1 mx-0 inline-block no-underline outline-none">
+    <LinkTo @route={{@route}} @query={{hash period='365'}} type="button" role="button" class="{{if (eq @period '365') 'pointer-events-none bg-blue-700 text-white' 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white'}} text-sm border border-l-0 border-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-700 focus:ring-opacity-50 px-2 py-1 mx-0 inline-block no-underline outline-none">
       1 anno
     </LinkTo>
-    <LinkTo @route={{@route}} @query={{hash period='all'}} type="button" role="button" class="{{if (eq @period 'all') 'pointer-events-none bg-blue-500 text-white' 'bg-white text-blue-500 hover:bg-blue-500 hover:text-white'}} text-sm border border-l-0 border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 lg:rounded-r px-2 py-1 mx-0 inline-block no-underline outline-none">
+    <LinkTo @route={{@route}} @query={{hash period='all'}} type="button" role="button" class="{{if (eq @period 'all') 'pointer-events-none bg-blue-700 text-white' 'bg-white text-blue-700 hover:bg-blue-700 hover:text-white'}} text-sm border border-l-0 border-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-700 focus:ring-opacity-50 lg:rounded-r px-2 py-1 mx-0 inline-block no-underline outline-none">
       inizio pandemia
     </LinkTo>
   </div>

@@ -2,7 +2,7 @@
   <div class="max-w-sm rounded overflow-hidden shadow-lg text-white p-4 {{trend-card-color @trend isGreater=@greater}}" data-test-trend-card>
     <div class="grid grid-cols-4 gap-1">
       <div class="col-span-3">
-        <h5 class="text-2xl font-bold" data-test-title={{@title}}>{{@title}}</h5>
+        <div class="text-2xl font-bold" data-test-title={{@title}}>{{@title}}</div>
       </div>
       <div class="text-right text-xl">
         {{#if (gt @trend 0)}}
@@ -14,6 +14,6 @@
         {{/if}}
       </div>
     </div>
-    <h6 class="text-white mt-2" data-test-label={{@label}}>{{@label}}</h6>
+    <div class="text-white mt-2" data-test-label={{@label}}>{{@label}}</div>
   </div>
 </div>

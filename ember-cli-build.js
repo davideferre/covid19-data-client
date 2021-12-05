@@ -13,7 +13,7 @@ const purgeCSS = {
       './app/templates/**/*.hbs',
       './app/components/**/*.hbs',
     ],
-    safelist: ['bg-green-500', 'bg-red-500', 'bg-yellow-500'],
+    safelist: ['bg-green-700', 'bg-red-700', 'bg-yellow-700'],
     defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
   },
 };
