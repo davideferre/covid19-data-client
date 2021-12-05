@@ -12,7 +12,7 @@ module.exports = function (environment) {
     name: 'Dati COVID 19 Italia',
     short_name: 'COVID19 Italian data',
     description: 'Riepilogo dei dati COVID 19 in Italia',
-    start_url: 'index.html',
+    start_url: './index.html',
     scope: '/',
     display: 'standalone',
     orientation: 'portrait',
@@ -24,6 +24,7 @@ module.exports = function (environment) {
         sizes: '512x512',
         src: '/assets/icons/maskable_icon_x512.png',
         type: 'image/png',
+        targets: ['manifest', 'apple', 'favicon'],
       },
       {
         purpose: 'maskable',
