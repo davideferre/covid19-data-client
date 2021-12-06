@@ -12,7 +12,7 @@ module.exports = function (environment) {
     name: 'Dati COVID 19 Italia',
     short_name: 'COVID19 Italian data',
     description: 'Riepilogo dei dati COVID 19 in Italia',
-    start_url: './index.html',
+    start_url: '/',
     scope: '/',
     display: 'standalone',
     orientation: 'portrait',
