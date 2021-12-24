@@ -8,12 +8,12 @@ module('Acceptance | region selector', function (hooks) {
   test('visiting / selecting a region and returning to index', async function (assert) {
     await visit('/');
 
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
     await select('[data-test-region-selector]', '1');
     await settled();
-    assert.equal(currentURL(), '/regions/1');
+    assert.strictEqual(currentURL(), '/regions/1');
     await select('[data-test-region-selector]', '-1');
     await settled();
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
   });
 });

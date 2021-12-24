@@ -1,3 +1,6 @@
+/* global require */
+/* global module */
+
 const colors = require('tailwindcss/colors');
 
 module.exports = {
